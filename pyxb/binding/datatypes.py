@@ -180,7 +180,9 @@ class decimal (basis.simpleTypeDefinition, python_decimal.Decimal, basis._Repres
             rchars.extend(map(str, digits))
         else:
             rchars.append('00')
-        return six.u('').join(rchars)
+        retorno = six.u('').join(rchars)
+        retorno += '0' if len(retorno.split('.')[1]) == 1 else ''
+        return retorno
 
 _PrimitiveDatatypes.append(decimal)
 
